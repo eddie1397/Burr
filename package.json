@@ -1,0 +1,22 @@
+{
+  "name": "Burr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eddie1397/Burr.git"
+  },
+  "author": "Edward Binion Jr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eddie1397/Burr/issues"
+  },
+  "homepage": "https://github.com/eddie1397/Burr#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
