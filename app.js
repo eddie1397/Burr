@@ -17,26 +17,30 @@ const url = 'https://api.weatherapi.com/v1/current.json?key=5a7b27039073496996c3
 app.get('/', (req,res)=>{
     //Making a GET request to the Weathermap API
     //Logging the Status Code to check whether the correct status code is displayed
-    https.get(url, res=>{
-        console.log(res.statusCode);
+    https.get(url, response=>{
+        console.log(response.statusCode);
         //Here we are taking the hexidcimal value given by the terminal and parsing the data and then storing that data
         // inside of a const called 'weatherData'
         //Lastly we log the data in the terminal so that we can see what information was provided by the API
-        res.on('data', data=>{
+        response.on('data', data=>{
             const weatherData = JSON.parse(data);
-            const name = weatherData.location.name + ', ' + weatherData.location.region
+            //Initialized variables to the API data for later use
+            //Combined two different piecees of information from API to create the name since both are sperate
+            const name = weatherData.location.name + ', ' + weatherData.location.region + '  ' + weatherData.location.country;
             const temp = weatherData.current.temp_f;
             const description = weatherData.current.condition.text;
+            //Include humidity, wind, pressure, dewpoint, visibility and UV index.
             const icon = weatherData.current.condition.icon;
+            //Logged data to console to make sure that the data was correct.
             console.log(name);
             console.log(temp);
             console.log(description);
             console.log(icon);
-
+            //Sending data to the browser using a res.send()
+            res.send('The Weather in ' + name + ' is ' + temp + ' degrees F.')
         })
     })
 
-    res.send('App Running!!!')
 })
 
 app.listen(PORT, (req,res)=>{
