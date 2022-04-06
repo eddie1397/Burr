@@ -47,9 +47,10 @@ app.get("/", (req, res) => {
       //Sending data to the browser using a res.send()
       res.write("<h1>The Weather in " + name + " is " + temp + " degrees F.</h1><br>");
       res.write('<h2>' + description + '</h2>');
+      res.write('Powered by ' + '<a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>' + '.')
       //Link icons at a later date
       //res.write('<img src='' + imgURL + ''>')
-
+      // Sending the res.writes^^^
       res.send();
     });
   });
