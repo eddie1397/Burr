@@ -24,10 +24,18 @@ app.get('/', (req,res)=>{
         //Lastly we log the data in the terminal so that we can see what information was provided by the API
         res.on('data', data=>{
             const weatherData = JSON.parse(data);
-            console.log(weatherData);
+            const name = weatherData.location.name + ', ' + weatherData.location.region
+            const temp = weatherData.current.temp_f;
+            const description = weatherData.current.condition.text;
+            const icon = weatherData.current.condition.icon;
+            console.log(name);
+            console.log(temp);
+            console.log(description);
+            console.log(icon);
+
         })
     })
-    
+
     res.send('App Running!!!')
 })
 
